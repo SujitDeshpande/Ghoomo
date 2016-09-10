@@ -56,7 +56,7 @@ public class LandingGridActivity extends BaseFragmentActivity {
             @Override
             public void onClick(View view) {
                 // Click action
-                Intent intent = new Intent(LandingGridActivity.this, CreateNewTripActivity.class);
+                Intent intent = new Intent(LandingGridActivity.this, NewTrip.class);
                 startActivity(intent);
             }
         });

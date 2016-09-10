@@ -1,4 +1,4 @@
-package com.ghoomo.ghoomo;
+package com.ghoomo.ghoomo.ui.userinterface;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import com.ghoomo.ghoomo.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
