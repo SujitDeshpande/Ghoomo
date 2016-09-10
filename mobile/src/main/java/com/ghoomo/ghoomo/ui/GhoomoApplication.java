@@ -5,12 +5,10 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.TextView;
 
+import com.digits.sdk.android.AuthCallback;
 import com.ghoomo.ghoomo.ui.utility.GhoomoConstant;
 import com.ghoomo.ghoomo.ui.utility.GhoomoPreference;
 
-/**
- * Created by Agoel on 10-09-2016.
- */
 public class GhoomoApplication extends Application {
 
     private static GhoomoApplication instance;
@@ -24,12 +22,15 @@ public class GhoomoApplication extends Application {
     // regular roboto font
     private static Typeface regularFont;
 
+    private AuthCallback authCallback;
+
 //    private BajajSQLiteHelper mBajajSQLiteHelper;
 //
 //    HashMap<String, ArrayList<ShortageTypes>> stringArrayListHashMap = new HashMap<>();
 
 //    private RequestQueue mRequestQueue;
 //    private ImageLoader mImageLoader;
+
 
     public static final String TAG = GhoomoApplication.class
             .getSimpleName();
@@ -47,6 +48,10 @@ public class GhoomoApplication extends Application {
         getMediumFont();
         getRegularFont();
 
+    }
+
+    public AuthCallback getAuthCallback(){
+        return authCallback;
     }
 
     /**
@@ -150,4 +155,5 @@ public class GhoomoApplication extends Application {
         super.onTerminate();
 //        unregisterReceiver(new NetworkReciever());
     }
+
 }
