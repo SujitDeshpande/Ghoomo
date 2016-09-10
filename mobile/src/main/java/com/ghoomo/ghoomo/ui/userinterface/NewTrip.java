@@ -1,14 +1,21 @@
 package com.ghoomo.ghoomo.ui.userinterface;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ghoomo.ghoomo.R;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +31,9 @@ public class NewTrip extends AppCompatActivity implements View.OnClickListener{
     Date selectedFromDate;
     private EditText mEditTextToDate;
     private Calendar mSelectedFromCalendar;
+    int PLACE_PICKER_SOURCE_REQUEST = 1;
+    int PLACE_PICKER_DESTINATION_REQUEST = 2;
+
     private  DatePickerDialog.OnDateSetListener fromListener = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -58,6 +68,8 @@ public class NewTrip extends AppCompatActivity implements View.OnClickListener{
             mEditTextToDate.setText(selectedToDate);
         }
     };
+    private TextView mSource;
+    private TextView mDestination;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +82,11 @@ public class NewTrip extends AppCompatActivity implements View.OnClickListener{
         mEditTextToDate = (EditText)findViewById(R.id.new_trip_to_date);
         mEditTextFromDate.setOnClickListener(this);
         mEditTextToDate.setOnClickListener(this);
+
+        mSource = (TextView)findViewById(R.id.new_trip_source);
+        mSource.setOnClickListener(this);
+        mDestination = (TextView)findViewById(R.id.new_trip_destination);
+        mDestination.setOnClickListener(this);
 //        Cursor cursor = contactAccessor.getAllContacts();
 //        Log.w("TAG==",cursor.getCount()+"");
 //        cursor.moveToFirst();
@@ -88,8 +105,27 @@ public class NewTrip extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.new_trip_to_date:
                 showCalendar(System.currentTimeMillis(), toListener);
-                default:
+                break;
+            case R.id.new_trip_source:
+                launchPlacePicker(PLACE_PICKER_SOURCE_REQUEST);
+            break;
+            case R.id.new_trip_destination:
+                launchPlacePicker(PLACE_PICKER_DESTINATION_REQUEST);
+                break;
+
+            default:
                     break;
+        }
+    }
+
+    private void launchPlacePicker(int requestId) {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        try {
+            startActivityForResult(builder.build(NewTrip.this), requestId);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
         }
     }
 
@@ -122,5 +158,19 @@ public class NewTrip extends AppCompatActivity implements View.OnClickListener{
 //        }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+            if (resultCode == RESULT_OK) {
+                if (requestCode == PLACE_PICKER_SOURCE_REQUEST) {
+                Place place = PlacePicker.getPlace(data, this);
+                String toastMsg = (String) place.getName();
+                mSource.setText(toastMsg);
+            }else if(requestCode == PLACE_PICKER_DESTINATION_REQUEST){
+                    Place place = PlacePicker.getPlace(data, this);
+                    String toastMsg = (String) place.getName();
+                    mDestination.setText(toastMsg);
+                }
+        }
+    }
 }

@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
@@ -35,6 +37,9 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="625310be8257bed27f87a8455b7c375209b05622" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBAUX-MKYVqOLTpTs91w16M9DFzaghg8Qw" />
 
         <activity android:name=".ui.userinterface.LandingGridActivity" />
     </application>
