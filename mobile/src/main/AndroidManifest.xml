@@ -3,10 +3,10 @@
     package="com.ghoomo.ghoomo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+
 
     <application
         android:allowBackup="true"
@@ -25,16 +25,21 @@
         </activity>
         <activity
             android:name=".ui.userinterface.LoginActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewTrip"
             android:label="@string/title_activity_new_trip"></activity>
 
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="625310be8257bed27f87a8455b7c375209b05622" />
+
+        <activity android:name=".ui.userinterface.LandingGridActivity" />
+        <activity
+            android:name=".ui.userinterface.CreateNewTripActivity"
+            android:label="@string/title_activity_create_new_trip"
+            android:theme="@style/Theme.GhoomoTheme"></activity>
     </application>
 
 </manifest>
