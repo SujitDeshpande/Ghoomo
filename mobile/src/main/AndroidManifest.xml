@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ghoomo.ghoomo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,19 +21,20 @@
         </activity>
         <activity
             android:name=".ui.userinterface.LoginActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.userinterface.Login"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="625310be8257bed27f87a8455b7c375209b05622" />
+
+        <activity android:name=".ui.userinterface.LandingGridActivity" />
+        <activity
+            android:name=".ui.userinterface.CreateNewTripActivity"
+            android:label="@string/title_activity_create_new_trip"
+            android:theme="@style/Theme.GhoomoTheme"></activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

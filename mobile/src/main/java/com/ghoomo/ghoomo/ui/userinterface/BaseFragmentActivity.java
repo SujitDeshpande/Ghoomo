@@ -75,40 +75,6 @@ public abstract class BaseFragmentActivity extends AppCompatActivity implements 
         }
     }
 
-//    /**
-//     * setting toolbar componenets
-//     */
-//    public void setToolBarComponents() {
-//
-//        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_awesome_toolbar);
-//
-//        ImageView helpCallImageView = (ImageView) findViewById(R.id.icHelpNumber);
-//        helpCallImageView.setVisibility(View.GONE);
-//
-//        ImageView logoutImageView = (ImageView) findViewById(R.id.ic_logout);
-//        logoutImageView.setVisibility(View.GONE);
-//
-//        timeTextView = (TextView) findViewById(R.id.timing_textView);
-//
-//    }
-//
-//    /**
-//     * setting costum toolbar according to screen
-//     */
-//    public void setFilterToolBarComponents() {
-//
-//        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_awesome_toolbar);
-//        ImageView helpCallImageView = (ImageView) findViewById(R.id.icHelpNumber);
-//        helpCallImageView.setVisibility(View.GONE);
-//
-//        ImageView filterImageView = (ImageView) findViewById(R.id.icFilter);
-//        filterImageView.setVisibility(View.VISIBLE);
-//
-//        ImageView logoutImageView = (ImageView) findViewById(R.id.ic_logout);
-//        logoutImageView.setVisibility(View.GONE);
-//    }
-
-
     public void setContentView(int layoutResID) {
 
         super.setContentView(layoutResID);
