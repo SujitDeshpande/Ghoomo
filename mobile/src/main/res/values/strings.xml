@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Ghoomo</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -18,5 +17,8 @@
     <string name="hint_password">Password</string>
     <string name="settings_delete_account">Delete Account</string>
     <string name="settings_privacy">Privacy</string>
+    <string name="title_activity_new_trip">NewTrip</string>
 
+
+    <string name="add_buddy">Add your buddy from below list</string>
 </resources>
