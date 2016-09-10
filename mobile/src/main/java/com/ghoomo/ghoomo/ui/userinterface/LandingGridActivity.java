@@ -23,7 +23,7 @@ public class LandingGridActivity extends BaseFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_grid);
 
-//        setActionBar(R.string.app_name, 0, "", false, false);
+        setActionBar(R.string.app_name, 0, "", false, false);
 
         initUiComponenets();
     }

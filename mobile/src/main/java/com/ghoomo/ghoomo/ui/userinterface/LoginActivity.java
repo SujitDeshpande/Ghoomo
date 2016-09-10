@@ -126,7 +126,7 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
 
                     snackbar.show();
 
-//                    moveNextToAndFinish(LandingActivity.class);
+                    moveNextToAndFinish(LandingGridActivity.class);
                 } else {
                     Snackbar snackbar = Snackbar
                             .make(mPhoneNumber_EditTExt, "Please fill username/password.", Snackbar.LENGTH_SHORT);
