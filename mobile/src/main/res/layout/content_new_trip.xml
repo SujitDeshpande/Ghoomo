@@ -13,22 +13,58 @@
     tools:showIn="@layout/activity_new_trip"
     android:orientation="vertical">
 
-    <ImageView
+    <EditText
+        android:id="@+id/new_trip_grp_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/trip_header_image_size"
-        android:src="@drawable/trip_header"/>
+        android:layout_height="wrap_content"
+        android:hint="@string/group_name"
+        android:textSize="@dimen/text_size_small"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/new_trip_from_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/start_date"
+        android:textSize="@dimen/text_size_small"
+        android:focusable="false"/>
+
+    <EditText
+        android:id="@+id/new_trip_to_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/end_date"
+        android:textSize="@dimen/text_size_small"
+        android:focusable="false"/>
 
     <TextView
+        android:id="@+id/new_trip_source"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_small"
-        android:text="@string/add_buddy"
-        android:textColor="@android:color/black"
+        android:text="Source"
+        android:focusable="false"
         />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/new_trip_rv"
+    <TextView
+        android:id="@+id/new_trip_destination"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_small"
+        android:text="Destination"
+        android:focusable="false"
+        />
+
+    <Button
+        android:id="@+id/new_trip_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_small"/>
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/new_trip_rv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+    <!--</android.support.v7.widget.RecyclerView>-->
 </LinearLayout>
