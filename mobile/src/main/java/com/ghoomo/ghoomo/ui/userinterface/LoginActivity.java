@@ -2,40 +2,58 @@ package com.ghoomo.ghoomo.ui.userinterface;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.ghoomo.ghoomo.NewTrip;
+import com.digits.sdk.android.AuthCallback;
+import com.digits.sdk.android.Digits;
+import com.digits.sdk.android.DigitsAuthButton;
+import com.digits.sdk.android.DigitsException;
+import com.digits.sdk.android.DigitsSession;
 import com.ghoomo.ghoomo.R;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+
+import io.fabric.sdk.android.Fabric;
 
 
 /**
  * Login activity
  */
-public class LoginActivity extends BaseFragmentActivity implements View.OnClickListener {
+public class LoginActivity extends BaseFragmentActivity {
 
     // edit text for phone number
     private EditText mPhoneNumber_EditTExt;
-    // edittext for password
-    private EditText mPassword_EditText;
     // editor for phone number
     private String mPhoneNumberEditor;
-    // editor for password
-    private String mPasswordEditor;
+
+
+    private AuthCallback authCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig("CKEihbEh3LgzDuaQov81oIKP7", "emKomVQZTmzTRMBaG0axVoK7JRYhIMB5wpz4HxhT9Li4xAlM48");
+        Fabric.with(this, new TwitterCore(authConfig), new Digits.Builder().build());
+        authCallback = new AuthCallback() {
+            @Override
+            public void success(DigitsSession session, String phoneNumber) {
+                Toast.makeText(LoginActivity.this,
+                        "Authentication Successful for " + phoneNumber, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, LandingGridActivity.class);
+                startActivity(intent);
+            }
 
+            @Override
+            public void failure(DigitsException exception) {
+                // Do something on failure
+            }
+        };
         initUiComponents();
     }
 
@@ -65,7 +83,7 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
 
                 if (s.length() > 0) {
                     mPhoneNumberEditor = s.toString();
-                    if (mPhoneNumberEditor.length() == 0 && mPasswordEditor.length() == 0) {
+                    if (mPhoneNumberEditor.length() == 0 ) {
                         // show toast or snakbar
 //                        Snackbar snackbar = Snackbar
 //                                .make(mPhoneNumber_EditTExt, "Welcome to AndroidHive", Snackbar.LENGTH_SHORT);
@@ -75,42 +93,15 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
                 }
             }
         });
-        mPassword_EditText = (EditText) findViewById(R.id.input_password);
-        if (mPassword_EditText != null) {
-            mPassword_EditText.setTypeface(Typeface.DEFAULT);
-        }
-        mPassword_EditText.setTransformationMethod(new PasswordTransformationMethod());
-        mPassword_EditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() > 0) {
-                    mPasswordEditor = s.toString();
-                    if (mPhoneNumberEditor.length() == 0 && mPasswordEditor.length() == 0) {
-                        // show taiost or snakbar
-
-//                        Snackbar snackbar = Snackbar
-//                                .make(mPassword_EditText, "Welcome to AndroidHive", Snackbar.LENGTH_SHORT);
-//
-//                        snackbar.show();
-                    }
-                }
-            }
-        });
         /*
       variable for button on click submit
      */
-        Button mSubmitButton = (Button) findViewById(R.id.submit_login_btn);
-        mSubmitButton.setOnClickListener(this);
+        DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.auth_button);
+        digitsButton.setCallback(authCallback);
+        digitsButton.setAuthTheme(android.R.style.Theme_Material);
+        digitsButton.setBackgroundColor(Color.parseColor("#ff398622"));
+        digitsButton.setText("Login");
     }
 
     @Override
@@ -118,43 +109,9 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.submit_login_btn:
-                if (checkLocal()) {
-                    Intent intent = new Intent(LoginActivity.this, NewTrip.class);
-                    startActivity(intent);
-                    Snackbar snackbar = Snackbar
-                            .make(mPhoneNumber_EditTExt, "Welcome to Lets Gang", Snackbar.LENGTH_SHORT);
 
-                    snackbar.show();
-
-                    moveNextToAndFinish(LandingGridActivity.class);
-                } else {
-                    Snackbar snackbar = Snackbar
-                            .make(mPhoneNumber_EditTExt, "Please fill username/password.", Snackbar.LENGTH_SHORT);
-
-                    snackbar.show();
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * check local fields
-     *
-     * @return
-     */
     private boolean checkLocal() {
 
-        if (TextUtils.isEmpty(mPhoneNumber_EditTExt.getText().toString()) || (TextUtils.isEmpty(mPassword_EditText.getText().toString()))) {
-            return false;
-        } else {
-
             return true;
-        }
     }
 }
