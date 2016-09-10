@@ -1,6 +1,7 @@
 package com.ghoomo.ghoomo.ui.userinterface;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.ghoomo.ghoomo.NewTrip;
 import com.ghoomo.ghoomo.R;
 
 
@@ -121,6 +123,8 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.submit_login_btn:
                 if (checkLocal()) {
+                    Intent intent = new Intent(LoginActivity.this, NewTrip.class);
+                    startActivity(intent);
                     Snackbar snackbar = Snackbar
                             .make(mPhoneNumber_EditTExt, "Welcome to Lets Gang", Snackbar.LENGTH_SHORT);
 
