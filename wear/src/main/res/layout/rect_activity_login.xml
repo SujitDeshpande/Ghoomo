@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ghoomo.ghoomo.Login"
+    tools:context="com.ghoomo.ghoomo.ui.userinterface.Login"
     tools:deviceIds="wear_square">
 
     <TextView

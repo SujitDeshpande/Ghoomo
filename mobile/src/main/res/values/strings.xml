@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Ghoomo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="toolbar_heading">Lets Gang</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_search_fragment">Hello Search fragment</string>
+    <string name="hello_upcoming_fragment">Hello Upcoming fragment</string>
+    <string name="hello_groups_fragment">Hello Group fragment</string>
+    <string name="hello_activities_fragment">Hello Activities fragment</string>
+    <string name="hello_settings_fragment">Hello Settings fragment</string>
+    <string name="hint_phonenumber">Phone Number</string>
+    <string name="hint_password">Password</string>
+    <string name="settings_delete_account">Delete Account</string>
+    <string name="settings_privacy">Privacy</string>
+
 </resources>

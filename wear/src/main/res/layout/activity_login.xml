@@ -7,5 +7,5 @@
     android:layout_height="match_parent"
     app:rectLayout="@layout/rect_activity_login"
     app:roundLayout="@layout/round_activity_login"
-    tools:context="com.ghoomo.ghoomo.Login"
+    tools:context="com.ghoomo.ghoomo.ui.userinterface.Login"
     tools:deviceIds="wear"></android.support.wearable.view.WatchViewStub>

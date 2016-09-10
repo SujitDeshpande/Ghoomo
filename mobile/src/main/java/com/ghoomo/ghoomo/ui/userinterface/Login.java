@@ -1,9 +1,11 @@
-package com.ghoomo.ghoomo;
+package com.ghoomo.ghoomo.ui.userinterface;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+
+import com.ghoomo.ghoomo.R;
 
 public class Login extends AppCompatActivity {
 
